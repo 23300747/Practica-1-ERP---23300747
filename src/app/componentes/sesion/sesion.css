@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.pantalla-autenticacion {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #eef2ef; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.auth-header {
+  background-color: #556255;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.auth-contenido {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Tarjeta Blanca */
+.tarjeta-auth {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px; 
+  padding: 48px;
+  border-radius: 8px;
+  border: 1px solid #e0e5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.auth-icono {
+  background-color: #f4f6f4;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.icono-emoji {
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.8; 
+}
+
+.auth-cabecera {
+  text-align: center;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.auth-cabecera h2 {
+  font-size: 22px;
+  color: #2b332d;
+  margin: 0 0 8px 0;
+}
+
+.auth-cabecera p {
+  font-size: 13.5px;
+  color: #7a857a;
+  margin: 0;
+}
+
+.auth-formulario {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-grupo label {
+  font-size: 13px;
+  color: #3b423d;
+  font-weight: 500;
+}
+
+.auth-grupo input {
+  padding: 12px 14px;
+  border: 1px solid #d1d8d1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2b332d;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.auth-grupo input:focus {
+  border-color: #556255;
+}
+
+.btn-auth {
+  background-color: #6f4e37;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  width: 100%;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.btn-auth:hover {
+  background-color: #5a3f2d;
+}
+
+.auth-enlace {
+  margin-top: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.auth-enlace a {
+  color: #7a857a;
+  text-decoration: underline;
+  font-size: 13px;
+}

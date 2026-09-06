@@ -1,0 +1,57 @@
+<div class="pantalla-autenticacion">
+  <header class="auth-header">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+    </svg>
+    <span>Cafetería — Panel Interno</span>
+  </header>
+
+  <div class="auth-contenido">
+    <div class="tarjeta-auth">
+      
+      <div class="auth-icono">
+        @if (!mostrarRegistro) {
+          <span class="icono-emoji">🔒</span>
+        } @else {
+          <span class="icono-emoji">👤</span>
+        }
+      </div>
+
+      <div class="auth-cabecera">
+        <h2>{{ !mostrarRegistro ? 'Inicio de Sesión' : 'Crear Cuenta' }}</h2>
+        <p>{{ !mostrarRegistro ? 'Accede con tu cuenta de administrador o empleado' : 'Registra un nuevo usuario para acceder al panel' }}</p>
+      </div>
+      
+      <form class="auth-formulario" (submit)="$event.preventDefault()">
+        @if (mostrarRegistro) {
+          <div class="auth-grupo">
+            <label>Nombre completo</label>
+            <input type="text" placeholder="-------">
+          </div>
+        }
+
+        <div class="auth-grupo">
+          <label>{{ !mostrarRegistro ? 'Correo institucional' : 'Correo electrónico' }}</label>
+          <input type="email" [placeholder]="!mostrarRegistro ? '-------@-----.com' : '-------@------.com'">
+        </div>
+        
+        <div class="auth-grupo">
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••">
+        </div>
+        
+        <button type="submit" class="btn-auth" [routerLink]="!mostrarRegistro ? '/dashboard' : null">
+          {{ !mostrarRegistro ? 'Iniciar Sesión' : 'Crear Cuenta' }}
+        </button>
+      </form>
+      
+      <div class="auth-enlace">
+        <a href="#" (click)="alternarVista(); $event.preventDefault()">
+          {{ !mostrarRegistro ? '¿No tienes cuenta? Regístrate aquí' : '¿Ya tienes cuenta? Inicia sesión' }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

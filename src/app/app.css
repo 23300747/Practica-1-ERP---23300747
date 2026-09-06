@@ -1,0 +1,118 @@
+:host {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.layout-principal {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  margin: -8px; 
+  overflow: hidden;
+}
+
+.encabezado-superior {
+  height: 60px;
+  background-color: #556255;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 20;
+}
+
+.icono-cafe {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.logo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-titulo h1 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.btn-salir {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.btn-salir:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.cuerpo-principal {
+  display: flex;
+  flex: 1;
+  background-color: #f4f6f4;
+  height: calc(100vh - 60px);
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e5e1;
+  display: flex;
+  flex-direction: column;
+}
+
+.navegacion {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  text-decoration: none;
+  color: #3b423d;
+  font-size: 14.5px;
+  font-weight: 500;
+  border-right: 4px solid transparent; 
+  border-left: none; 
+}
+
+.nav-item:hover {
+  background-color: #f9faf9;
+}
+
+.nav-item.activo {
+  background-color: rgba(85, 98, 85, 0.08); 
+  border-left: 4px solid #556255; 
+  font-weight: 600;
+}
+
+.icono {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.6;
+}
+
+.nav-item.activo .icono {
+  opacity: 1;
+}
+
+.area-trabajo {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
