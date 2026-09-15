@@ -9,43 +9,38 @@
 
   <div class="auth-contenido">
     <div class="tarjeta-auth">
-      
+
       <div class="auth-icono">
-        @if (!mostrarRegistro) {
-          <span class="icono-emoji">🔒</span>
-        } @else {
-          <span class="icono-emoji">👤</span>
-        }
       </div>
 
       <div class="auth-cabecera">
         <h2>{{ !mostrarRegistro ? 'Inicio de Sesión' : 'Crear Cuenta' }}</h2>
         <p>{{ !mostrarRegistro ? 'Accede con tu cuenta de administrador o empleado' : 'Registra un nuevo usuario para acceder al panel' }}</p>
       </div>
-      
-      <form class="auth-formulario" (submit)="$event.preventDefault()">
+
+      <form class="auth-formulario" (submit)="$event.preventDefault(); enviar()">
         @if (mostrarRegistro) {
           <div class="auth-grupo">
             <label>Nombre completo</label>
-            <input type="text" placeholder="-------">
+            <input type="text" name="nombre" [value]="nombre" (input)="nombre = $any($event.target).value" placeholder="-------">
           </div>
         }
 
         <div class="auth-grupo">
           <label>{{ !mostrarRegistro ? 'Correo institucional' : 'Correo electrónico' }}</label>
-          <input type="email" [placeholder]="!mostrarRegistro ? '-------@-----.com' : '-------@------.com'">
+          <input type="email" name="correo" [value]="correo" (input)="correo = $any($event.target).value" [placeholder]="!mostrarRegistro ? '-------@-----.com' : '-------@------.com'">
         </div>
-        
+
         <div class="auth-grupo">
           <label>Contraseña</label>
-          <input type="password" placeholder="••••••••">
+          <input type="password" name="contrasena" [value]="contrasena" (input)="contrasena = $any($event.target).value" placeholder="••••••••">
         </div>
-        
-        <button type="submit" class="btn-auth" [routerLink]="!mostrarRegistro ? '/dashboard' : null">
+
+        <button type="submit" class="btn-auth">
           {{ !mostrarRegistro ? 'Iniciar Sesión' : 'Crear Cuenta' }}
         </button>
       </form>
-      
+
       <div class="auth-enlace">
         <a href="#" (click)="alternarVista(); $event.preventDefault()">
           {{ !mostrarRegistro ? '¿No tienes cuenta? Regístrate aquí' : '¿Ya tienes cuenta? Inicia sesión' }}

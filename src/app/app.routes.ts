@@ -15,5 +15,5 @@ export const routes: Routes = [
     { path: 'finanzas', component: Finanzas },
     { path: 'inventario', component: Inventario },
     { path: 'rh', component: Rh },
-    { path: 'ventas', component: Ventas }
+    { path: 'ventas', component: Ventas}
 ];

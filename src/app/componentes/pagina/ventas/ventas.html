@@ -4,7 +4,9 @@
       <h2>Ventas y Facturación</h2>
       <p>Ventas diarias, IVA y canal e-commerce · factura en XML</p>
     </div>
-    <button class="btn-primario-cafe" (click)="nuevaVenta()">+ Nueva venta</button>
+    @if (esAdmin()) {
+      <button class="btn-primario-cafe" (click)="abrirModal()">+ Nueva venta</button>
+    }
   </div>
 
   <div class="tarjetas-resumen">
@@ -45,6 +47,9 @@
               <td>{{ item.iva }}</td>
               <td>
                 <span class="etiqueta {{ item.claseEstado }}">{{ item.estadoFactura }}</span>
+                @if (item.estadoFactura === 'Facturada') {
+                  <button class="btn-cancelar" style="margin-left: 8px; padding: 2px 8px; font-size: 12px;" (click)="verFactura(item)">Ver Factura</button>
+                }
               </td>
             </tr>
           }
@@ -52,4 +57,71 @@
       </table>
     </div>
   </div>
+
+  @if (mostrarModal) {
+    <div class="modal-overlay">
+      <div class="modal-contenido">
+        <div class="modal-cabecera">
+          <h3>Registrar Nueva Venta</h3>
+          <button class="btn-cerrar-x" (click)="cerrarModal()">✕</button>
+        </div>
+
+        @if (errorMensaje) {
+          <div class="form-error-alert">
+            {{ errorMensaje }}
+          </div>
+        }
+
+        <div class="form-grupo">
+          <label>Nombre del Cliente:</label>
+          <input type="text" [value]="formNombreCliente" (input)="formNombreCliente = $any($event.target).value" placeholder="Público general" />
+        </div>
+        <div class="form-grupo">
+          <label>Producto:</label>
+          <select [value]="formProductoId" (change)="formProductoId = $any($event.target).value">
+            <option value="">Seleccione un producto...</option>
+            @for (prod of productosLista; track prod.id) {
+              <option [value]="prod.id">{{ prod.producto || prod.nombre }} (ID: {{ prod.id }})</option>
+            }
+          </select>
+        </div>
+        <div class="form-grupo">
+          <label>Cantidad:</label>
+          <input type="number" [value]="formCantidad" (input)="formCantidad = $any($event.target).value" placeholder="0" />
+        </div>
+        <div class="form-grupo">
+          <label>Precio unitario ($):</label>
+          <input type="number" [value]="formPrecioUnitario" (input)="formPrecioUnitario = $any($event.target).value" placeholder="0.00" />
+        </div>
+        <div class="modal-acciones">
+          <button class="btn-cancelar" [disabled]="cargando" (click)="cerrarModal()">Cancelar</button>
+          <button class="btn-guardar" [disabled]="cargando" (click)="guardarVenta()">
+            {{ cargando ? 'Guardando...' : 'Guardar' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (mostrarModalFactura) {
+    <div class="modal-overlay">
+      <div class="modal-contenido">
+        <div class="modal-cabecera">
+          <h3>Factura XML - Venta #{{ facturaSeleccionada?.venta_id }}</h3>
+          <button class="btn-cerrar-x" (click)="cerrarModalFactura()">✕</button>
+        </div>
+        <div class="form-grupo">
+          <label>Fecha de emisión:</label>
+          <p>{{ facturaSeleccionada?.fecha_emision }}</p>
+        </div>
+        <div class="form-grupo">
+          <label>Contenido XML:</label>
+          <textarea readonly style="width: 100%; height: 120px; font-family: monospace; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; padding: 8px;">{{ facturaSeleccionada?.archivo_xml }}</textarea>
+        </div>
+        <div class="modal-acciones">
+          <button class="btn-cancelar" (click)="cerrarModalFactura()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  }
 </div>

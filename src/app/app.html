@@ -12,24 +12,28 @@
     <div class="cuerpo-principal">
       <aside class="sidebar">
         <nav class="navegacion">
-          <a routerLink="/dashboard" routerLinkActive="activo" class="nav-item">
-            <img src="Panel.png" alt="Panel" class="icono" /> Panel principal
-          </a>
-          <a routerLink="/finanzas" routerLinkActive="activo" class="nav-item">
-            <img src="Finanzas.png" alt="Finanzas" class="icono" /> Contabilidad y Finanzas
-          </a>
-          <a routerLink="/inventario" routerLinkActive="activo" class="nav-item">
-            <img src="Hexagono.png" alt="Inventario" class="icono" /> Gestión de Inventario
-          </a>
+          @if (esAdmin()) {
+            <a routerLink="/dashboard" routerLinkActive="activo" class="nav-item">
+              <img src="Panel.png" alt="Panel" class="icono" /> Panel principal
+            </a>
+            <a routerLink="/finanzas" routerLinkActive="activo" class="nav-item">
+              <img src="Finanzas.png" alt="Finanzas" class="icono" /> Contabilidad y Finanzas
+            </a>
+            <a routerLink="/inventario" routerLinkActive="activo" class="nav-item">
+              <img src="Hexagono.png" alt="Inventario" class="icono" /> Gestión de Inventario
+            </a>
+          }
           <a routerLink="/ventas" routerLinkActive="activo" class="nav-item">
             <img src="Cuadrado.png" alt="Ventas" class="icono" /> Ventas y Facturación
           </a>
           <a routerLink="/compras" routerLinkActive="activo" class="nav-item">
             <img src="Compras.png" alt="Compras" class="icono" /> Compras
           </a>
-          <a routerLink="/rh" routerLinkActive="activo" class="nav-item">
-            <img src="Usuario.png" alt="RH" class="icono" /> Recursos Humanos
-          </a>
+          @if (esAdmin()) {
+            <a routerLink="/rh" routerLinkActive="activo" class="nav-item">
+              <img src="Usuario.png" alt="RH" class="icono" /> Recursos Humanos
+            </a>
+          }
         </nav>
       </aside>
 
